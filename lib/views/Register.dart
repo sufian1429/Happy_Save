@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:happysave/views/Login.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 
 class Register extends StatefulWidget {
   static String routeName = '/Register';
@@ -17,7 +17,7 @@ class _RegisterState extends State<Register> {
   TextEditingController password = TextEditingController();
 
   Future register() async {
-    var url = "http://192.168.31.164/iP/register.php";
+    var url = "http://192.168.31.196/happysave1/Register.php";
     var response = await http.post(url, body: {
       'name': name.text,
       'user': user.text,
@@ -42,6 +42,10 @@ class _RegisterState extends State<Register> {
           backgroundColor: Colors.blue,
           textColor: Colors.black,
           fontSize: 16.0);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+      );
     }
   }
 
@@ -63,15 +67,18 @@ class _RegisterState extends State<Register> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR1GkRae8oC80GQQUyI9rhKEhXH6b99EQqmQ&usqp=CAU.jpg',
-                  height: 80,
+                  'https://cdn4.iconfinder.com/data/icons/office-and-business-conceptual-flat/169/19-128.png',
+                  height: 144,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  'Register',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  'Income-Expenses',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange),
                 ),
               ),
               Padding(

@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
-  static String routeName = '/login';
+  static String routeName = '/Login';
   @override
   _LoginState createState() => _LoginState();
 }
@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
   TextEditingController password = TextEditingController();
 
   Future login() async {
-    var url = "http://192.168.31.164/iP/login.php";
+    var url = "http://192.168.31.196/happysave1/Login.php";
     var response = await http.post(url, body: {
       "user": user.text,
       "password": password.text,
@@ -34,11 +34,7 @@ class _LoginState extends State<Login> {
           fontSize: 16.0);
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => Home(
-            data: 'Welcome to Happy Save',
-          ),
-        ),
+        MaterialPageRoute(builder: (context) => Home()),
       );
     } else {
       Fluttertoast.showToast(
@@ -70,19 +66,22 @@ class _LoginState extends State<Login> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(200),
                 child: Image.network(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfx1f-q6YSf8Kt322KgdwNHExJ2OuEujhLKw&usqp=CAU.jpg',
+                  'https://cdn3.iconfinder.com/data/icons/scenarium-vol-5/128/050_money_security_shield-128.png',
                   height: 144,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Login',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  'Income-Expenses',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(9.7),
                 child: TextField(
                   decoration: InputDecoration(
                     labelText: 'username',
@@ -94,7 +93,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(9.7),
                 child: TextField(
                   obscureText: true,
                   decoration: InputDecoration(
